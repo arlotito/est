@@ -203,6 +203,13 @@ func main() {
 		ClientCAs: clientCAs,
 	}
 
+	// ART: if CA client certs are given, force the tls client authentication
+	logger.Infof("number of client CA certificates: %v", len(clientCACerts))
+	if len(clientCACerts) > 0 {
+		logger.Infof("force TLS CA cert authentication")
+		tlsCfg.ClientAuth = tls.RequireAndVerifyClientCert
+	}
+
 	// Create a password function which requires a HTTP Basic Authentication
 	// username of "healthcheck" and the password from the configuration (no
 	// password if no configuration was provided) to access the /healthcheck
@@ -243,7 +250,7 @@ func main() {
 	stop := make(chan os.Signal, 1)
 	signal.Notify(stop, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT, syscall.SIGHUP)
 
-	logger.Infof("Starting EST server FOR NON-PRODUCTION USE ONLY - patched by arlotito - https://github.com/arlotito/est")
+	logger.Infof("Starting EST server FOR NON-PRODUCTION USE ONLY - https://github.com/arlotito/est")
 
 	go s.ListenAndServeTLS("", "")
 
