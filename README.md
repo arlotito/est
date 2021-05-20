@@ -1,8 +1,14 @@
-# est
+This repo is a fork of https://github.com/globalsign/est with basically the following two changes applied:
+* removes the PEM header/footer before doing b64. This is needed for this SERVER to work with Azure IoT Edge (502dbf8e4489f57774c66516aa6d13ac78135a09) 
+* if client CAs are specified in the config file (tls->client_cas), the server will force the TLS client authentication (8f6a83f354dd51aa700db3e45bf0b3f8b1e01f9b) 
 
-[![GoDoc](https://godoc.org/github.com/globalsign/est?status.svg)](https://godoc.org/github.com/globalsign/est)
-[![Build Status](https://github.com/globalsign/est/actions/workflows/go.yml/badge.svg)](https://github.com/globalsign/est/actions/workflows/go.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/globalsign/est)](https://goreportcard.com/report/github.com/globalsign/est)
+Here's a containerized version of this server: https://github.com/arlotito/est-server-docker
+
+
+---
+
+Hereafter the original repo documentation.
+# est
 
 An implementation of the Enrollment over Secure Transport (EST) certificate
 enrollment protocol as defined by [RFC7030](https://tools.ietf.org/html/rfc7030).
