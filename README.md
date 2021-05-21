@@ -1,5 +1,6 @@
-This repo is a fork of https://github.com/globalsign/est with basically the following two changes applied:
-* removes the PEM header/footer before doing b64. This is needed for this SERVER to work with Azure IoT Edge ([8f6a83f](https://github.com/arlotito/est/commit/8f6a83f354dd51aa700db3e45bf0b3f8b1e01f9b)) 
+# Overview
+This EST server is a fork of https://github.com/globalsign/est with basically the following two changes applied:
+* removes the PEM header/footer from base64 encoding/decoding. This is needed for this SERVER to work with Azure IoT Edge ([8f6a83f](https://github.com/arlotito/est/commit/8f6a83f354dd51aa700db3e45bf0b3f8b1e01f9b)) 
 * if client CAs are specified in the config file (tls->client_cas), the server will force the TLS client authentication ([502dbf8](https://github.com/arlotito/est/commit/502dbf8e4489f57774c66516aa6d13ac78135a09))
 
 Here's a containerized version of this server: https://github.com/arlotito/est-server-docker
