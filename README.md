@@ -1,8 +1,8 @@
 # Overview
 This EST server is a fork of https://github.com/globalsign/est with two changes applied:
-* removes the PEM header/footer from base64 encoding/decoding. This is needed for this SERVER to work with Azure IoT Edge.
+* removes the header/footer from the incoming CSR before performing the base64 decoding.
+  This is needed for this server to work with openssl/curl and Azure IoT Edge as described in [this](https://github.com/globalsign/est/issues/23) issue
    * patch: https://github.com/arlotito/est/commit/502dbf8e4489f57774c66516aa6d13ac78135a09
-   * issue with full details: https://github.com/globalsign/est/issues/23 
 * if client CAs are specified in the config file (tls->client_cas), the server will force the TLS client authentication
    * patch: https://github.com/arlotito/est/commit/8f6a83f354dd51aa700db3e45bf0b3f8b1e01f9b
 
